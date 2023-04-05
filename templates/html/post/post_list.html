@@ -1,0 +1,73 @@
+{% extends 'html/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/post/post_list.css' %}">
+
+<section class="posts">
+    <div class="posts-section">
+        <h1 class="posts-header">Posts</h1>
+        <div class="post-list">
+            {% for post in response.results %}
+                <div class="post">
+                    <div class=post-header>
+                        <div class="post-header-info">
+                            <p class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></p>
+                            <p class="post-author">{{ post.author }} | {{ post.created }}</p>
+                        </div>
+                        {% if user.is_authenticated %}
+                            {% if post.id in favorites %}
+                                <form action="{% url 'favorite:delete-pl' %}" class="post-header-action" method="POST">
+                                    {% csrf_token %}
+                                    <input id="delete-fav-post" name="delete-fav-post" type="text" value="{{ post.id }}" hidden>
+                                    <input class="btn-fav" type="submit" value="&#9733;">
+                                </form>
+                            {% else %}
+                                <form action="{% url 'favorite:create-pl' %}" class="post-header-action" method="POST">
+                                    {% csrf_token %}
+                                    <input id="fav-post" name="fav-post" type="text" value="{{ post.id }}" hidden>
+                                    <input class="btn-fav" type="submit" value="&#9734;">
+                                </form>
+                            {% endif %}                        
+                        {% endif %}
+                    </div>
+                    <span class="post-description">{{ post.content|truncatechars:400 }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <ul class="pagination">
+        {% if page.has_previous %}
+            <li class="page-item"><a class="page-link" href="{{ response.previous }}">&laquo;</a></li>
+        {% else %}
+            <li class="disabled page-item"><span class="page-link">&laquo;</span></li>
+        {% endif %}
+    
+        {% for elided_page in elided_pages|default_if_none:page.paginator.get_elided_page_range %}
+            {% if page.number == elided_page %}
+                <li class="active page-item"><span class="current">{{ elided_page }}</span></li>
+            {% else %}
+            
+                {% if "…" in elided_page %}
+                    <li class="page-item"><span class="page-dots">{{ elided_page }}</span></li>
+                {% else %}
+                    {% if elided_page == page.paginator.ELLIPSIS %}
+                        <li class="page-item"><span class="page-link">{{ elided_page }}</span></li>
+                    {% else %}                    
+                        <li class="page-item"><a class="page-link" href="?page={{ elided_page }}">{{ elided_page }}</a></li>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    
+        {% if page.has_next %}
+            <li class="page-item"><a class="page-link" href="{{ response.next }}">&raquo;</a></li>
+        {% else %}
+            <li class="disabled page-item"><span class="page-link">&raquo;</span></li>
+        {% endif %}            
+    </ul>
+</section>
+
+{% endblock content %}

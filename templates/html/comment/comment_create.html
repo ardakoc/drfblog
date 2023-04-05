@@ -1,0 +1,8 @@
+<div class="comment-add">
+    <form action="{% url 'comment:comment_create' %}" class="comment-create-form" method="POST">
+        {% csrf_token %}
+        <input name="comment-post" type="hidden" value="{{ post.slug }}">
+        <textarea id="comment-content" name="comment-content" class="comment-add-content" rows="4" cols="100" placeholder="Write a comment..."></textarea>
+        <input class="comment-add-btn" type="submit" value="Add">
+    </form>
+</div>

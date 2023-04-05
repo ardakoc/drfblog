@@ -1,0 +1,57 @@
+.post-create-form {
+    padding: 72px 500px;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    gap: 20px;
+}
+
+.form-group textarea {
+    height: 200px;
+}
+
+.form-group input[name="title"] {
+    height: 25px;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 30px;
+}
+
+.btn-post-create {
+    font-family: 'Source Sans Pro', sans-serif;
+    cursor: pointer;
+    width: auto;
+    font-size: 16px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    color: black;
+    background-color: #e5e5e5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-post-create:hover {
+    color: brown;
+}
+
+.cancel:link,
+.cancel:active,
+.cancel:visited {
+    color: white;
+    background-color: red;
+}
+
+.cancel:hover {
+    color: black;
+}

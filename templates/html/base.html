@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    
+    {% block title %}<title>DRF Blog</title>{% endblock title %}
+</head>
+<body>
+    <nav class="main-nav">
+        <ul class="menu">
+            <li class="blog-logo"><a href="{% url 'post:post_list' %}">DRF Blog</a></li>
+            <div class="nav-links">                
+                {% if user.is_authenticated %}
+                     <li><a href="{% url 'post:post_create' %}">New post</a></li>
+                    <li><a href="{% url 'account:profile' %}">Profile</a></li>
+                {% else %}
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Register</a></li>
+                {% endif %}
+                <li><a href="#">Community</a></li>                
+                {% if user.is_authenticated %}
+                    <li><a href="#">Logout</a></li>
+                {% endif %}
+            </div>
+        </ul>
+    </nav>
+    {% block content %}{% endblock content %}
+</body>
+</html>

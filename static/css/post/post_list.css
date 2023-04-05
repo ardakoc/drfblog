@@ -1,0 +1,64 @@
+.posts {
+    padding: 0 300px 50px 300px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.posts-header {
+    font-size: 24px;
+    padding-bottom: 24px;
+}
+
+.post-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.post-header {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 12px;
+
+    display: flex;
+    align-items: first baseline;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.post-title a:link,
+.post-title a:visited,
+.post-title a:active {
+    font-weight: 700;
+    color: rgb(0, 0, 94);
+}
+
+.post-title a:hover {
+    color: brown;
+}
+
+.post-author {
+    color: #555;
+    font-size: 12px;
+    padding-top: 4px;
+}
+
+.btn-fav {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #0092ab;
+}
+
+.post-description {
+    font-style: italic;
+    color: #555;
+}

@@ -1,0 +1,21 @@
+{% extends 'html/base.html' %}
+
+{% load static %}
+{% load rest_framework %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/post/post_create.css' %}">
+
+<section class="post-create">
+    <form action="{% url 'post:post_create' %}" class="post-create-form" method="POST">
+        {% csrf_token %}
+        {% render_form serializer %}
+        <div class="form-buttons">
+            <input class="btn-post-create" type="submit" value="Create Post">
+            <a href="{% url 'post:post_list' %}" class="btn-post-create cancel">Cancel</a>
+        </div>
+    </form>
+</section>
+
+{% endblock content %}

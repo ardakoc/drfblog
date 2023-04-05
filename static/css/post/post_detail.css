@@ -1,0 +1,73 @@
+.post {
+    padding: 0 500px;
+    padding-bottom: 50px;
+}
+
+.post-header {
+    padding-bottom: 24px;
+    display: flex;
+    align-items: first baseline;
+    justify-content: space-between;
+}
+
+.post-title {
+    padding-bottom: 8px;
+}
+
+.post-author {
+    padding-bottom: 12px;
+    font-size: 14px;
+    color: #555;
+}
+
+.post-dates {
+    color: #555;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.post-header-action {
+    display: flex;
+    align-items: first baseline;
+}
+
+.post-content {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+    line-height: 1.5;
+}
+
+.btn-fav {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #0092ab;
+}
+
+.post-update:link,
+.post-delete:link,
+.post-update:visited,
+.post-delete:visited {
+    cursor: pointer;
+    font-size: 20px;
+    border: none;
+    padding-left: 8px;
+}
+
+.post-update,
+.comment-update {
+    color: black;
+    /* background-color: #e5e5e5; */
+}
+
+.post-delete,
+.comment-delete {
+    color: red;
+    /* background-color: red; */
+}
+
+.post-delete:hover,
+.comment-delete:hover {
+    color: black;
+}

@@ -1,0 +1,212 @@
+.profile {
+    padding: 0 450px;
+    padding-bottom: 50px;
+
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+}
+
+.user-information {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.user-info-group {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.user-posts {
+    border-left: 1px solid #ccc;
+    padding-left: 80px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.user-posts-header,
+.user-favorites-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-post-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.user-post-header {
+    display: flex;
+    align-items: first baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 12px;
+}
+
+.user-post-header-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-post-title a:link,
+.user-post-title a:visited,
+.user-post-title a:active,
+.user-favorite-title a:link,
+.user-favorite-title a:visited,
+.user-favorite-title a:active {
+    color: rgb(0, 0, 94);
+    font-weight: 700;
+}
+
+.user-post-title a:hover,
+.user-favorite-title a:hover {
+    color: brown;
+}
+
+.user-post-created,
+.user-favorite-created {
+    color: #555;
+    font-size: 12px;
+    padding-top: 4px;
+}
+
+.user-post-header-action {
+    display: flex;
+    align-items: first baseline;
+}
+
+.post-update:link,
+.post-delete:link,
+.post-update:visited,
+.post-delete:visited {
+    cursor: pointer;
+    font-size: 20px;
+    border: none;
+    padding-left: 8px;
+}
+
+.post-update {
+    color: black;
+    /* background-color: #e5e5e5; */
+}
+
+.post-delete {
+    color: red;
+    /* background-color: red; */
+}
+
+.post-delete:hover {
+    color: black;
+}
+
+.user-post-description,
+.user-favorite-description {
+    font-style: italic;
+    color: #555;
+}
+
+.btn-fav {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: rgb(0, 146, 171);
+}
+
+.form-group {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+
+.form-group label {
+    font-weight: 700;
+}
+
+.form-group label:after {
+    content: ":"
+}
+
+.form-group input {
+    height: 25px;
+}
+
+fieldset {
+    padding: 12px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-buttons {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 36px;
+    padding-top: 4px;
+
+    display: flex;
+    gap: 30px;
+}
+
+.user-favorites {
+    padding-top: 36px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.btn-profile-update {
+    font-family: 'Source Sans Pro', sans-serif;
+    cursor: pointer;
+    width: auto;
+    font-size: 16px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    color: black;
+    background-color: #e5e5e5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-profile-update:hover {
+    color: brown;
+}
+
+.btn-lg {
+    width: auto;
+    font-size: 14px;
+    padding: 16px;
+    border-radius: 16px;
+}
+
+.cancel:link,
+.cancel:active,
+.cancel:visited {
+    color: white;
+    background-color: red;
+}
+
+.cancel:hover {
+    color: black;
+}
+
+.show-all {
+    font-size: 12px;
+    
+    display: flex;
+    align-items: flex-end;
+}

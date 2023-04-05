@@ -1,0 +1,44 @@
+<div class="user-info">
+    <div class="user-info-group">
+        <h2>{{ user.username }}</h2>
+    </div>
+    <div class="user-info-group">
+        <h4>First name:</h4>
+        <p>{{ user.first_name }}</p>
+    </div>
+    <div class="user-info-group">
+        <h4>Last name:</h4>
+        <p>{{ user.last_name }}</p>
+    </div>
+    <div class="user-info-group">
+        <h4>Email:</h4>
+        <p>{{ user.email }}</p>
+    </div>
+    <div class="user-info-group">
+        <h4>About:</h4>
+        {% if user.profile.about %}
+            <p>{{ user.profile.about }}</p>
+        {% else %}
+            <p>-</p>
+        {% endif %}
+    </div>
+    <div class="user-info-group">
+        <h4>Social account:</h4>
+        {% if user.profile.social_account %}
+            <p>{{ user.profile.social_account }}</p>
+        {% else %}
+            <p>-</p>
+        {% endif %}
+    </div>
+    <div class="user-info-group">
+        <h4>Last login:</h4>
+        <p>{{ user.last_login }}</p>
+    </div>
+    <div class="user-info-group">
+        <h4>Date joined:</h4>
+        <p>{{ user.date_joined }}</p>
+    </div>
+    <div class="form-buttons">
+        <a href="{% url 'account:profile_update' %}" class="btn-profile-update btn-lg">Update profile</a>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+{% extends 'html/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/post/post_detail.css' %}">
+<link rel="stylesheet" href="{% static 'css/comment/comment.css' %}">
+
+<section class="post">
+    <div class="post-header">
+        <div class="post-header-info">
+            <h1 class="post-title">{{ post.title }}</h1>
+            <p class="post-author">{{ post.user.first_name }} {{ post.user.last_name }}</p>
+            <div class="post-dates">
+                <p class="post-created">Created: {{ post.created }}</p>
+                <p class="post-updated">Last update: {{ post.updated }}</p>
+            </div>
+        </div>
+        <div class="post-header-action">
+            {% if user.is_authenticated %}
+                {% if favorite %}
+                    <form action="{% url 'favorite:delete-pd' %}" method="POST">
+                        {% csrf_token %}
+                        <input id="delete-fav-post" name="delete-fav-post" type="text" value="{{ post.slug }}" hidden>
+                        <input class="btn-fav" type="submit" value="&#9733;">
+                    </form>
+                {% else %}
+                    <form action="{% url 'favorite:create-pd' %}" method="POST">
+                        {% csrf_token %}
+                        <input id="fav-post" name="fav-post" type="text" value="{{ post.slug }}" hidden>
+                        <input class="btn-fav" type="submit" value="&#9734;">
+                    </form>
+                {% endif %}
+                {% if user.is_superuser or post.user == user %}
+                    <a href="{% url 'post:post_update' post.slug %}" class="post-update">&#9998;</a>
+                    <a href="{% url 'post:post_delete' post.slug %}" class="post-delete">&#10006;</a>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    <p class="post-content">{{ post.content }}</p>
+</section>
+<section class="comments">
+    <div class="comments-header">
+        <h3 class="comments-title">Comments ({{ comments.count }})</h3>
+    </div>
+    {% if user.is_authenticated %}
+        {% include 'html/comment/comment_create.html' %}
+    {% endif %}
+    {% include 'html/comment/comment_list.html' %}
+</section>
+
+{% endblock content %}

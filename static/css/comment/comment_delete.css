@@ -1,0 +1,49 @@
+.comment-delete {
+    display: flex;
+    justify-content: center;
+}
+
+.comment-delete-form {
+    padding: 72px 500px;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.btn-comment-delete {
+    font-family: 'Source Sans Pro', sans-serif;
+    cursor: pointer;
+    width: 80px;
+    height: 32px;
+    font-size: 16px;
+    border: none;
+    border-radius: 16px;
+    color: white;
+    background-color: red;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-comment-delete:hover {
+    color: black;
+}
+
+.cancel:link,
+.cancel:active,
+.cancel:visited {
+    color: black;
+    background-color: #e5e5e5;
+}
+
+.cancel:hover {
+    color: brown;
+}

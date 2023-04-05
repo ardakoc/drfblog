@@ -1,0 +1,21 @@
+{% extends 'html/base.html' %}
+
+{% load static %}
+{% load rest_framework %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/post/post_update.css' %}">
+
+<section class="post-update">
+    <form action="{% url 'post:post_update' slug=post.slug %}" class="post-update-form" method="POST">
+        {% csrf_token %}
+        {% render_form serializer %}
+        <div class="form-buttons">
+            <input class="btn-post-update" type="submit" value="Update Post">
+            <a href="{% url 'post:post_detail' slug=post.slug %}" class="btn-post-update cancel">Cancel</a>
+        </div>
+    </form>
+</section>
+
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% load rest_framework %}
+
+<form action="{% url 'account:profile_update' %}" class="user-info" method="POST">
+    {% csrf_token %}
+    <h2>{{ user.username }}</h2>
+    {% render_form serializer %}
+    <div class="form-buttons">
+        <input class="btn-profile-update" type="submit" value="Update">
+        <a href="{% url 'account:profile' %}" class="btn-profile-update cancel">Cancel</a>
+    </div>
+</form>
+   

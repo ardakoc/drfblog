@@ -1,0 +1,55 @@
+{% for comment in comments %}
+        {% if not comment.parent %}
+            <div class="comment">
+                <div class="comment-header">
+                    <p class="comment-author">{{ comment.user.username }}</p>
+                    <p class="comment-date">{{ comment.created }}</p>                    
+                </div>
+                <div class="comment-body">
+                    <p class="comment-content">{{ comment.content}}</p>
+                </div>
+                <div class="comment-actions">
+                    <a class="btn-comment-action" href="#">Reply</a>
+                    {% if user.is_superuser or comment.user == user %}
+                            <span class="dot">&#x2022;</span>
+                            <a class="btn-comment-action" href="{% url 'comment:comment_update' comment.id %}">Update</a>
+                            <span class="dot">&#x2022;</span>
+                            <a class="btn-comment-action" href="{% url 'comment:comment_delete' comment.id %}">Delete</a>
+                    {% endif %}
+                </div>
+                {% if comment.replies %}
+                    <div class="replies">
+                    {% for reply in comment.replies.all %}
+                        <div class="reply">
+                            <div class="comment-header">
+                                <p class="comment-author">{{ reply.user.username }}</p>
+                                <p class="comment-date">{{ reply.created }}</p>
+                            </div>
+                            <div class="comment-body">
+                                <p class="comment-content">{{ reply.content }}</p>
+                            </div>
+                            <div class="comment-actions">
+                                <a class="btn-comment-action" href="#">Reply</a>
+                            </div>
+                            {% if reply.replies %}
+                                <div class="replies">
+                                {% for reply1 in reply.replies.all %}
+                                    <div class="reply">
+                                        <div class="comment-header">
+                                            <p class="comment-author">{{ reply1.user.username }}</p>
+                                            <p class="comment-date">{{ reply1.created }}</p>
+                                        </div>
+                                        <div class="comment-body">
+                                            <p class="comment-content">{{ reply1.content }}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endfor %}
